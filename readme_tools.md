@@ -18,6 +18,14 @@
 
     - [解析yaml配置文件](#解析yaml配置文件)
 
+  - [csv文件读写操作](#csv文件读写操作)
+
+    - [输出csv文件](#输出csv文件)
+
+    - [读取csv文件内容，列表形式返回](#读取csv文件内容，列表形式返回)
+
+    - [读取csv文件内容，迭代器形式返回](#读取csv文件内容，迭代器形式返回)
+
 
 # 工具类使用说明文档
 
@@ -223,4 +231,103 @@ params:
     thread: 5
 server:
     port: 12345
+~~~
+
+## csv文件读写操作
+
+### 输出csv文件
+
+- 函数定义.
+
+~~~python
+def write_csv_file(file_name, titles, row_datas):
+    """ 输出csv文件，需保证title与行的内容个数一致.
+
+        @params:
+            file_name - 文件名称.
+            titles - 标题列表.
+            row_datas - 每一行的数据，每个元素也是一个列表或者元组.
+    """
+~~~
+
+- 示例，`Example`:
+
+~~~python
+from qytPython.tools.file_csv import write_csv_file
+
+file_name = './data/temp.csv'
+titles = ['title', 'keyword', 'content']
+row_datas = [
+    ['元旦了', '元旦', '2020年1月1日是元旦。'],
+    ['天气晴朗', '晴朗，天气', '2020年1月1日是元旦，天气很不错。'],
+]
+write_csv_file(file_name, titles, row_datas)
+~~~
+
+- 输出的csv文件示例：
+
+~~~python
+title,keyword,content
+元旦了,元旦,2020年1月1日是元旦。
+天气晴朗,晴朗，天气,2020年1月1日是元旦，天气很不错。
+~~~
+
+### 读取csv文件内容，列表形式返回
+
+- 函数定义.
+
+~~~python
+def read_csv_file(file_name):
+    """ 读取csv文件内容，列表形式返回.
+
+        @params:
+            file_name - 文件名.
+
+        @return:
+            On success - 返回每行数据的列表，列表元素为每行数据的字典形式.
+    """
+~~~
+
+- 示例，`Example`:
+
+~~~python
+from qytPython.tools.file_csv import read_csv_file
+
+file_name = './test/dataset/text.csv'
+row_datas = read_csv_file(file_name)
+print(row_datas[:3])
+# 输出：[OrderedDict([('title', '元旦了'), ('keyword', '元旦'), ('content', '2020年1月1日是元旦。')]), OrderedDict([('title', '天气晴朗'), ('keyword', '晴朗，天气'), ('content', '2020年1月1日是元旦，天气很不错。')])]
+~~~
+
+### 读取csv文件内容，迭代器形式返回
+
+- 函数定义.
+
+~~~python
+def read_csv_file_iter(file_name):
+    """ 读取csv文件内容，迭代器形式返回.
+
+        @params:
+            file_name - 文件名.
+
+        @return:
+            On success - 返回每行数据的迭代器，迭代器元素为每行数据的字典形式.
+    """
+~~~
+
+- 示例，`Example`:
+
+~~~python
+from qytPython.tools.file_csv import read_csv_file_iter
+
+file_name = './test/dataset/text.csv'
+row_datas = read_csv_file_iter(file_name)
+print(row_datas)
+# 输出：<generator object read_csv_file_iter at 0x000002DCC1CDB048>
+for index, row_data in enumerate(row_datas):
+    if index > 3:
+        break
+    print(row_data)
+# 输出：OrderedDict([('title', '元旦了'), ('keyword', '元旦'), ('content', '2020年1月1日是元旦。')])
+# OrderedDict([('title', '天气晴朗'), ('keyword', '晴朗，天气'), ('content', '2020年1月1日是元旦，天气很不错。')])
 ~~~

@@ -16,7 +16,7 @@ print(pkgs)
 
 setup(
     name='qytPython',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/q759729997/qytPython',
     description='qytPython: Python tools',
     long_description=readme,

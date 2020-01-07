@@ -1,5 +1,5 @@
 """
-    module(text) - 文件与文件夹处理模块.
+    module(file) - 文件与文件夹处理模块.
 
     Main members:
 
