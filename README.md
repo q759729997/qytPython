@@ -35,7 +35,7 @@ pip install qytPython
 ## 使用文档
 
 - git地址：<https://github.com/q759729997/qytPython>
-- [工具类使用手册-readme_tools.md](readme_tools.md)
+- [工具类使用手册-readme_tools.md](https://github.com/q759729997/qytPython/blob/master/readme_tools.md)
 
 ## 致谢
 
