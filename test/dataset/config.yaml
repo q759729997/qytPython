@@ -1,0 +1,6 @@
+path:
+    model_file: ./models
+params:
+    thread: 5
+server:
+    port: 12345
