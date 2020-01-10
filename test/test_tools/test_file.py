@@ -14,6 +14,7 @@ from qytPython.tools.file import get_file_names_recursion  # noqa
 from qytPython.tools.file import read_file_texts  # noqa
 from qytPython.tools.file import read_file_iter  # noqa
 from qytPython.tools.file import read_yaml_config   # noqa
+from qytPython.tools.file import unzip_file  # noqa
 
 
 class TestFile(unittest.TestCase):
@@ -24,6 +25,7 @@ class TestFile(unittest.TestCase):
         test_read_file_texts - 测试读取文件内容.
         test_read_file_iter - 测试读取文件内容，使用迭代器返回.
         test_read_yaml_config - 测试解析yaml配置文件.
+        test_unzip_file - 测试解压zip文件.
     """
     @unittest.skip('debug')
     def test_get_file_names_recursion(self):
@@ -41,7 +43,7 @@ class TestFile(unittest.TestCase):
         """ 测试读取文件内容.
         """
         print('{} test_read_file_texts {}'.format('-'*15, '-'*15))
-        file_name = 'test/dataset/text.txt'
+        file_name = './test/dataset/text.txt'
         texts = read_file_texts(file_name)
         print(texts[:5])
         # 输出：['中共中央/nt 致/o 中国致公党十一大/nt 的贺词/o', '各位代表、各位同志：/o', '中国共产党中央委员会/nt', '１９９７年１１月１日/o', '（/o 新华社/nt 北京/ns １１月１日电）/o']
@@ -54,7 +56,7 @@ class TestFile(unittest.TestCase):
         """ 测试读取文件内容，使用迭代器返回.
         """
         print('{} test_read_file_iter {}'.format('-'*15, '-'*15))
-        file_name = 'test/dataset/text.txt'
+        file_name = './test/dataset/text.txt'
         texts = read_file_iter(file_name)
         print(texts)
         # 输出：<generator object read_file_iter at 0x0000014734951780>
@@ -76,15 +78,24 @@ class TestFile(unittest.TestCase):
         print(texts_for_print)
         # 输出：['中共中央/nt 致/o 中国致公党十一大/nt 的贺词/o \r\n', '各位代表、各位同志：/o \r\n', '中国共产党中央委员会/nt \r\n', '１９９７年１１月１日/o \r\n', '（/o 新华社/nt 北京/ns １１月１日电）/o ']
 
-    # @unittest.skip('debug')
+    @unittest.skip('debug')
     def test_read_yaml_config(self):
         """ 测试解析yaml配置文件.
         """
         print('{} test_read_yaml_config {}'.format('-'*15, '-'*15))
-        file_name = 'test/dataset/config.yaml'
+        file_name = './test/dataset/config.yaml'
         config = read_yaml_config(file_name)
         print(config)
         # 输出：{'path': {'model_file': './models'}, 'params': {'thread': 5}, 'server': {'port': 12345}}
+
+    # @unittest.skip('debug')
+    def test_unzip_file(self):
+        """ 测试解压zip文件
+        """
+        print('{} test_unzip_file {}'.format('-'*15, '-'*15))
+        zip_file = './test/dataset/data.zip'
+        file_path = './data/zip_temp'
+        unzip_file(zip_file, file_path)
 
 
 if __name__ == "__main__":

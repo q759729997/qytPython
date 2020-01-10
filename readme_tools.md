@@ -18,6 +18,8 @@
 
     - [解析yaml配置文件](#解析yaml配置文件)
 
+    - [zip包解压](#zip包解压)
+
   - [csv文件读写操作](#csv文件读写操作)
 
     - [输出csv文件](#输出csv文件)
@@ -25,6 +27,10 @@
     - [读取csv文件内容，列表形式返回](#读取csv文件内容，列表形式返回)
 
     - [读取csv文件内容，迭代器形式返回](#读取csv文件内容，迭代器形式返回)
+
+  - [ftp上传下载](#ftp上传下载)
+
+    - [通过FTP链接，下载文件](#通过FTP链接，下载文件)
 
 
 # 工具类使用说明文档
@@ -233,6 +239,33 @@ server:
     port: 12345
 ~~~
 
+### zip包解压
+
+- 函数定义.
+
+~~~python
+def unzip_file(zip_file, file_path):
+    """ 解压zip文件.
+
+        @params:
+            zip_file - zip文件.
+            file_path - 文件路径.
+
+        @return:
+            On success - 是否成功.
+    """
+~~~
+
+- 示例，`Example`:
+
+~~~python
+from qytPython.tools.file import unzip_file
+
+zip_file = './test/dataset/data.zip'
+file_path = './data/zip_temp'
+unzip_file(zip_file, file_path)
+~~~
+
 ## csv文件读写操作
 
 ### 输出csv文件
@@ -330,4 +363,35 @@ for index, row_data in enumerate(row_datas):
     print(row_data)
 # 输出：OrderedDict([('title', '元旦了'), ('keyword', '元旦'), ('content', '2020年1月1日是元旦。')])
 # OrderedDict([('title', '天气晴朗'), ('keyword', '晴朗，天气'), ('content', '2020年1月1日是元旦，天气很不错。')])
+~~~
+
+## ftp上传下载
+
+### 通过FTP链接，下载文件
+
+- 函数定义.
+
+~~~python
+def download_file(ftp_url, file_name, file_path=''):
+    """ 通过FTP链接，下载文件.
+
+        @params:
+            ftp_url - ftp链接.
+            file_name - 文件名.
+            file_path - 文件路径.
+
+        @return:
+            On success - 是否成功.
+    """
+~~~
+
+- 示例，`Example`:
+
+~~~python
+from qytPython.tools.ftp import download_file
+
+ftp_url = 'http://39.104.161.233:80/tianchi/7000.csv'
+file_name = '7000.csv'
+file_path = 'data/yuchuan/'
+download_file(ftp_url, file_name, file_path)
 ~~~

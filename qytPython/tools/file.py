@@ -7,17 +7,21 @@
         # read_file_texts - 读取文件内容.
         # read_file_iter - 读取文件内容，使用迭代器返回.
         # read_yaml_config - 解析yaml配置文件.
+        # unzip_file - 解压zip文件.
 """
 __all__ = [
     'get_file_names_recursion',
     'read_file_texts',
     'read_file_iter',
-    'read_yaml_config'
+    'read_yaml_config',
+    'unzip_file'
 ]
 
 import codecs
 import os
+import pathlib
 import yaml
+import zipfile
 
 
 def get_file_names_recursion(path, file_names):
@@ -96,3 +100,21 @@ def read_yaml_config(file_name):
     with codecs.open(filename=file_name, mode='r', encoding='utf8') as fread:
         conf = yaml.load(fread, Loader=yaml.FullLoader)
     return conf
+
+
+def unzip_file(zip_file, file_path):
+    """ 解压zip文件.
+
+        @params:
+            zip_file - zip文件.
+            file_path - 文件路径.
+
+        @return:
+            On success - 是否成功.
+    """
+    pathlib.Path(file_path).mkdir(parents=True, exist_ok=True)
+    zipFile = zipfile.ZipFile(zip_file)
+    for file in zipFile.namelist():
+        zipFile.extract(file, file_path)
+    zipFile.close()
+    return True
