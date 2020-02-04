@@ -1,6 +1,7 @@
 from qytPython import tools
+from . import version
 
-__version__ = '0.0.3'  # 版本号
+__version__ = version.__version__  # 版本号
 
 __all__ = [
     'tools'
