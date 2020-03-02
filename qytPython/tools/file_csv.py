@@ -28,7 +28,8 @@ def write_csv_file(file_name, titles, row_datas):
     with codecs.open(file_name, mode='w', encoding='utf-8') as csvout:
         writer = csv.writer(csvout)
         # 写入表头
-        writer.writerow(titles)
+        if titles is not None:
+            writer.writerow(titles)
         for row_data in row_datas:
             writer.writerow(row_data)
 
