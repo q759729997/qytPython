@@ -16,7 +16,6 @@ __all__ = [
     'read_yaml_config',
     'unzip_file'
 ]
-from qytPython.units.requirement import check_requirement
 import codecs
 import os
 import pathlib
@@ -26,6 +25,8 @@ try:
     import yaml
 except Exception:
     yaml = None
+
+from qytPython.utils.requirement import check_requirement
 
 
 def _check_requirement_yaml():

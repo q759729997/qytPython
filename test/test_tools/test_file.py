@@ -88,7 +88,7 @@ class TestFile(unittest.TestCase):
         print(config)
         # 输出：{'path': {'model_file': './models'}, 'params': {'thread': 5}, 'server': {'port': 12345}}
 
-    # @unittest.skip('debug')
+    @unittest.skip('debug')
     def test_unzip_file(self):
         """ 测试解压zip文件
         """

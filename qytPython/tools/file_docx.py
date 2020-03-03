@@ -10,7 +10,7 @@
         # https://python-docx.readthedocs.io/en/latest/user/install.html
         # https://www.cnblogs.com/program-in-chinese/p/10500103.html
 """
-from qytPython.units.requirement import check_requirement
+from qytPython.utils.requirement import check_requirement
 # 需要判断依赖的包
 try:
     import docx
