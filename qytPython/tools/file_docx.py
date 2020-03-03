@@ -1,5 +1,14 @@
-# https://python-docx.readthedocs.io/en/latest/user/install.html
-# https://www.cnblogs.com/program-in-chinese/p/10500103.html
+"""
+    my_module - Briefly describe this module.
+
+    Main members:
+
+        # read_docx_tables - 读取docx中的表格数据.
+    参考资料:
+
+        # https://python-docx.readthedocs.io/en/latest/user/install.html
+        # https://www.cnblogs.com/program-in-chinese/p/10500103.html
+"""
 from qytPython.units.requirement import check_requirement
 # 需要判断依赖的包
 try:

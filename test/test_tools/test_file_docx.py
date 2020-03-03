@@ -30,7 +30,6 @@ class TestFileDocx(unittest.TestCase):
         file_name = './data/tables.docx'
         # out_out_file = './data/docx_tables/table_{}.csv'
         tables = read_docx_tables(file_name)
-        # # 输出：<generator object read_csv_file_iter at 0x000002DCC1CDB048>
         for index, table in enumerate(tables):
             # if index != 0:
             #     continue
