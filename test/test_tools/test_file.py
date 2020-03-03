@@ -78,7 +78,7 @@ class TestFile(unittest.TestCase):
         print(texts_for_print)
         # 输出：['中共中央/nt 致/o 中国致公党十一大/nt 的贺词/o \r\n', '各位代表、各位同志：/o \r\n', '中国共产党中央委员会/nt \r\n', '１９９７年１１月１日/o \r\n', '（/o 新华社/nt 北京/ns １１月１日电）/o ']
 
-    @unittest.skip('debug')
+    # @unittest.skip('debug')
     def test_read_yaml_config(self):
         """ 测试解析yaml配置文件.
         """

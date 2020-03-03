@@ -16,12 +16,20 @@ __all__ = [
     'read_yaml_config',
     'unzip_file'
 ]
-
+from qytPython.units.requirement import check_requirement
 import codecs
 import os
 import pathlib
-import yaml
 import zipfile
+# 需要判断依赖的包
+try:
+    import yaml
+except Exception:
+    yaml = None
+
+
+def _check_requirement_yaml():
+    return check_requirement(yaml, 'yaml')
 
 
 def get_file_names_recursion(path, file_names):
@@ -97,6 +105,7 @@ def read_yaml_config(file_name):
         @return:
             On success - 解析后的配置对象，字典形式.
     """
+    _check_requirement_yaml()
     with codecs.open(filename=file_name, mode='r', encoding='utf8') as fread:
         conf = yaml.load(fread, Loader=yaml.FullLoader)
     return conf

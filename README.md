@@ -15,6 +15,11 @@ python setup.py install
 pip install qytPython
 ```
 
+## 依赖包
+
+- `requirements.txt`为主要依赖（默认配置），可以在使用某个模块时，根据提示进行对应包的安装.
+- `requirements_all.txt`为全部依赖.
+
 ## 适用平台
 
 - Linux

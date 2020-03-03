@@ -1,7 +1,15 @@
 # https://python-docx.readthedocs.io/en/latest/user/install.html
 # https://www.cnblogs.com/program-in-chinese/p/10500103.html
-from docx import Document
-from .text import remove_blank
+from qytPython.units.requirement import check_requirement
+# 需要判断依赖的包
+try:
+    import docx
+except Exception:
+    docx = None
+
+
+def _check_requirement_docx():
+    return check_requirement(docx, 'docx')
 
 
 def read_docx_tables(file_name):
@@ -14,7 +22,8 @@ def read_docx_tables(file_name):
             On success - 表格数据列表.
             On failure - 错误信息.
     """
-    file_reader = Document(file_name)
+    _check_requirement_docx()
+    file_reader = docx.Document(file_name)
     tables = file_reader.tables
     print('tables len:{}'.format(len(tables)))
     formated_tables = list()
@@ -24,7 +33,7 @@ def read_docx_tables(file_name):
         for row in table.rows:
             formated_row = list()
             for column in row.cells:
-                text = remove_blank(column.text)
+                text = column.text
                 formated_row.append(text)
             formated_table.append(formated_row)
         formated_tables.append(formated_table)
