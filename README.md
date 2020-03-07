@@ -12,7 +12,8 @@ python setup.py install
 - 使用pip进行安装
 
 ```python
-pip install qytPython
+pip install qytPython  # 使用pypi安装
+pip install git+https://github.com/q759729997/qytPython.git@master  # 使用git安装
 ```
 
 ## 依赖包
