@@ -9,8 +9,10 @@ import unittest
 import sys
 import pprint
 
-sys.path.append('./')
+sys.path.insert(0, './')  # 定义搜索路径的优先顺序，序号从0开始，表示最大优先级
 
+import qytPython  # noqa
+print('qytPython module path :{}'.format(qytPython.__file__))  # 输出测试模块文件位置
 from qytPython.tools.file_docx import read_docx_tables  # noqa
 # from qytPython.tools.file_csv import write_csv_file  # noqa
 

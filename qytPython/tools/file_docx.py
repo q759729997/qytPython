@@ -1,5 +1,5 @@
 """
-    my_module - Briefly describe this module.
+    my_module - word操作.
 
     Main members:
 

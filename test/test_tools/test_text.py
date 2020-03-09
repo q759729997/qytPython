@@ -9,8 +9,10 @@ import json
 import unittest
 import sys
 
-sys.path.append('./')
+sys.path.insert(0, './')  # 定义搜索路径的优先顺序，序号从0开始，表示最大优先级
 
+import qytPython  # noqa
+print('qytPython module path :{}'.format(qytPython.__file__))  # 输出测试模块文件位置
 from qytPython.tools.text import remove_blank  # noqa
 from qytPython.tools.text import get_json_dumps  # noqa
 
