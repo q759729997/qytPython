@@ -22,11 +22,12 @@ def _check_requirement_docx():
     return check_requirement(docx, 'docx')
 
 
-def read_docx_tables(file_name):
+def read_docx_tables(file_name, is_formated=True):
     """ 读取docx中的表格数据.
 
         @params:
             file_name - docx文件名.
+            is_formated - 表格数据是否格式化为普通列表，若不格式化则为docx对象形式.
 
         @return:
             On success - 表格数据列表.
@@ -36,9 +37,13 @@ def read_docx_tables(file_name):
     file_reader = docx.Document(file_name)
     tables = file_reader.tables
     print('tables len:{}'.format(len(tables)))
+    if not is_formated:
+        return tables
     formated_tables = list()
     # 表格数据解析
-    for table in tables:
+    tables_len = len(tables)
+    for table_id, table in enumerate(tables):
+        print('process table {}/{}'.format(table_id + 1, tables_len))
         formated_table = list()
         for row in table.rows:
             formated_row = list()

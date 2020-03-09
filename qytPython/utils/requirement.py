@@ -3,7 +3,7 @@
 
     Main members:
 
-        # __main__ - 程序入口.
+        # check_requirement - 检查依赖.
 """
 # 模块与pypi对应关系
 module_pypi_config = {
