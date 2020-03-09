@@ -7,6 +7,8 @@
 """
 from timeit import Timer
 
+from qytPython import logger
+
 
 def analyze_func_run_time(func, run_times=1):
     """ 程序运行时间.
@@ -21,5 +23,5 @@ def analyze_func_run_time(func, run_times=1):
     """
     t1 = Timer(func)
     run_time = t1.timeit(run_times)
-    print("{} {} s".format(func.__name__ + ":", run_time))
+    logger.info("{} {:10.6} s".format(func.__name__ + ":", run_time))
     return run_time

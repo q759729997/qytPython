@@ -36,7 +36,7 @@ class TestFileDocx(unittest.TestCase):
             # if index != 0:
             #     continue
             print('{} table no :{} {}'.format('-'*15, index, '-'*15))
-            pprint.pprint(table)
+            pprint.pprint(table[:5])
             # csv_file_name = out_out_file.format(index + 1)
             # write_csv_file(file_name=csv_file_name, titles=None, row_datas=table)
 

@@ -5,6 +5,8 @@
 
         # check_requirement - 检查依赖.
 """
+from qytPython import logger
+
 # 模块与pypi对应关系
 module_pypi_config = {
     'docx': 'python-docx',
@@ -23,7 +25,7 @@ def check_requirement(module_obj, module_name):
             On success - 检查成功返回True.
             On failure - 依赖缺少Exception信息.
     """
-    print('module_obj:{}'.format(module_obj))
+    logger.info('module_obj:{}'.format(module_obj))
     if module_obj is None:
         pypi_name = module_pypi_config.get(module_name, module_name)
         raise Exception('缺少依赖，您可以执行以下命令进行安装： \npip install {}'.format(pypi_name))

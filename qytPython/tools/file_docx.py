@@ -10,6 +10,7 @@
         # https://python-docx.readthedocs.io/en/latest/user/install.html
         # https://www.cnblogs.com/program-in-chinese/p/10500103.html
 """
+from qytPython import logger
 from qytPython.utils.requirement import check_requirement
 # 需要判断依赖的包
 try:
@@ -36,14 +37,14 @@ def read_docx_tables(file_name, is_formated=True):
     _check_requirement_docx()
     file_reader = docx.Document(file_name)
     tables = file_reader.tables
-    print('tables len:{}'.format(len(tables)))
+    logger.info('tables len:{}'.format(len(tables)))
     if not is_formated:
         return tables
     formated_tables = list()
     # 表格数据解析
     tables_len = len(tables)
     for table_id, table in enumerate(tables):
-        print('process table {}/{}'.format(table_id + 1, tables_len))
+        logger.info('process table {}/{}'.format(table_id + 1, tables_len))
         formated_table = list()
         for row in table.rows:
             formated_row = list()
