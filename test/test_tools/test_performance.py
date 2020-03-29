@@ -14,6 +14,7 @@ sys.path.insert(0, './')  # 定义搜索路径的优先顺序，序号从0开始
 import qytPython  # noqa
 print('qytPython module path :{}'.format(qytPython.__file__))  # 输出测试模块文件位置
 from qytPython.tools.performance import analyze_func_run_time  # noqa
+from qytPython.tools.performance import RunTimeBenchmark  # noqa
 
 
 class TestPerformance(unittest.TestCase):
@@ -21,9 +22,10 @@ class TestPerformance(unittest.TestCase):
 
     Main methods:
         test_analyze_func_run_time - 程序运行时间.
+        test_RunTimeBenchmark - 程序运行时间.
     """
 
-    # @unittest.skip('debug')
+    @unittest.skip('debug')
     def test_analyze_func_run_time(self):
         """ 程序运行时间.
         """
@@ -35,6 +37,19 @@ class TestPerformance(unittest.TestCase):
 
         print(analyze_func_run_time(run_time_test))  # run_time_test: 1.0073572258482262 s
         print(analyze_func_run_time(run_time_test, run_times=2))  # run_time_test: 2.0132420583797828 s
+
+    # @unittest.skip('debug')
+    def test_RunTimeBenchmark(self):
+        """ 程序运行时间.
+        """
+        print('{} test_RunTimeBenchmark {}'.format('-'*15, '-'*15))
+
+        def run_time_test():
+            for i in range(10):
+                time.sleep(0.1)
+        with RunTimeBenchmark('run_time_test耗时:'):
+            run_time_test()
+        # run_time_test耗时: time: 1.0091 sec
 
 
 if __name__ == "__main__":
